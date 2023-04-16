@@ -14,7 +14,7 @@ const kebabToCamelCase = (str: string): string => str.replace(/-([a-z])/g, (matc
 
 const Input = ({ type = 'text', disabled, placeholder, slug, group }: TInputProp) => {
     const optionsValue = useSelector((state: any) => state.options);
-    const [value, setValue] = React.useState(optionsValue[group][slug]);
+    const [value, setValue] = React.useState(optionsValue[group][slug] || '');
     const dispatch = useDispatch();
     
     useEffect(() => {

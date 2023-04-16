@@ -28,6 +28,7 @@ const Select = ({ options, disabled, slug, group }: TProps) => {
         <select
             className="text-sm font-normal rounded border-2 text-black h-auto bg-white hover:border-blue-400 disabled:bg-gray-100 disabled:text-gray-500 transition-all focus:outline-none p-2"
             disabled={disabled || !options.length}
+            value={value}
             onChange={onChange}
         >
             {options.map((option, index) => {
@@ -35,7 +36,6 @@ const Select = ({ options, disabled, slug, group }: TProps) => {
                     <option
                         key={index}
                         value={option.value}
-                        selected={option.value === value}
                     >
                         {option.label}
                     </option>
