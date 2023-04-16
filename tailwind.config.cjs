@@ -5,7 +5,10 @@ module.exports = {
         './src/**/*.{js,ts,jsx,tsx}',
     ],
     theme: {
-        extend: {},
+        fontFamily: {
+            'sans'       : ['\'Ubuntu\', sans-serif', 'system-ui'],
+            'handwriting': ['\'Patrick Hand\', sans-serif', 'system-ui'],
+        },
     },
     plugins: [],
 };

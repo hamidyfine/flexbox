@@ -1,1 +1,11 @@
-{}
+{
+    "app": {
+        "name": "Flexbox Playground",
+        "description": "A web app for exploring Flexbox"
+    },
+    "options": {
+        "container_title": "Container",
+        "item_title": "Item"
+    },
+    "footer": "Created by Hamid Yaftian"
+}
