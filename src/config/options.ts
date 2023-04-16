@@ -8,7 +8,7 @@ export type TOption = {
 };
 
 type TOptions = {
-    group_slug: string,
+    group_slug: 'container' | 'item',
     icon: string,
     color: string,
     options: TOption[],
@@ -54,10 +54,11 @@ export const OPTIONS: TOptions[] = [
                 ],
             },
             {
-                slug      : 'flex-flow',
-                type      : 'input',
-                disabled  : false,
-                input_type: 'text'
+                slug       : 'flex-flow',
+                type       : 'input',
+                disabled   : true,
+                input_type : 'text',
+                placeholder: 'row nowrap',
             },
             {
                 slug    : 'justify-content',
@@ -98,13 +99,6 @@ export const OPTIONS: TOptions[] = [
                 ],
             },
             {
-                slug       : 'gap',
-                type       : 'input',
-                disabled   : false,
-                input_type : 'text',
-                placeholder: '10px 10px'
-            },
-            {
                 slug       : 'row-gap',
                 type       : 'input',
                 disabled   : false,
@@ -117,7 +111,14 @@ export const OPTIONS: TOptions[] = [
                 disabled   : false,
                 input_type : 'text',
                 placeholder: '10px',
-            }
+            },
+            {
+                slug       : 'gap',
+                type       : 'input',
+                disabled   : true,
+                input_type : 'text',
+                placeholder: 'row-gap column-gap'
+            },
         ]
     },
     {
@@ -156,11 +157,11 @@ export const OPTIONS: TOptions[] = [
                 ],
             },
             {
-                slug      : 'flex',
-                type      : 'input',
-                disabled  : false,
-                input_type: 'text'
-
+                slug       : 'flex',
+                type       : 'input',
+                disabled   : true,
+                input_type : 'text',
+                placeholder: 'flex-grow flex-shrink auto'
             },
             {
                 slug    : 'align-self',

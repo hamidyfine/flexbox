@@ -9,7 +9,7 @@ const camelToKebab = (camelCase: string) => {
 };
 
 
-const OptionBox = ({ option, label, classes }: { option: TOption, label: string, classes?: string }) => {
+const OptionBox = ({ option, classes, group }: { option: TOption, classes?: string; group: 'item' | 'container' }) => {
     const options_values = option.options?.map((val) => {
         return {
             label: val,
@@ -18,11 +18,13 @@ const OptionBox = ({ option, label, classes }: { option: TOption, label: string,
     });
     return (
         <div className={classNames('items-center grid grid-cols-2 px-3 py-2', classes)}>
-            <span className="text-sm font-medium">{camelToKebab(label)}</span>
+            <span className="text-sm font-medium">{camelToKebab(option.slug)}</span>
             <>
                 {option.type === 'select' && (
                     <Select
                         disabled={option.disabled}
+                        slug={option.slug}
+                        group={group}
                         options={options_values!}
                     />
                 )}
@@ -31,6 +33,8 @@ const OptionBox = ({ option, label, classes }: { option: TOption, label: string,
                         disabled={option.disabled}
                         type={option.input_type}
                         placeholder={option.placeholder}
+                        slug={option.slug}
+                        group={group}
                     />
                 )}
             </>
@@ -63,7 +67,7 @@ const Options = () => {
                                 return (
                                     <OptionBox
                                         option={option}
-                                        label={option.slug}
+                                        group={group.group_slug}
                                         key={i}
                                         classes={classNames(`[&:nth-child(even)]:bg-${group.color}-50`)}
                                     />
