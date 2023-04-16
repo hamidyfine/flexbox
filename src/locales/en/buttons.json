@@ -1,5 +1,6 @@
 {
     "playground": {
-        "reset": "Reset to default"
+        "reset": "Reset to default",
+        "add_box": "Add Box"
     }
 }

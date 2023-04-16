@@ -46,7 +46,7 @@ const Options = () => {
     // const options_keys = Object.keys(OPTIONS);
 
     return (
-        <aside className="flex flex-col bg-white border-r border-gray-300 h-full w-80 overflow-y-auto p-2">
+        <aside className="flex flex-col basis-1/4 bg-white border-r border-gray-300 h-full w-80 overflow-y-auto p-2">
             {OPTIONS.map((group, index) => {
                 return (
                     <div
