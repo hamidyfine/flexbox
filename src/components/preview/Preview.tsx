@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { useSelector, useDispatch } from 'react-redux';
 import { Locale, localize } from '../Locale';
 import Button from '../ui/button';
@@ -66,7 +67,7 @@ const Preview = () => {
                             <Box
                                 key={box.id}
                                 box={box}
-                                className={`border-2 border-dashed rounded-md flex items-center justify-center font-bold w-40 h-20 m-2 ${box.id === active_box_id ? 'border-blue-900 bg-blue-300' : 'border-cyan-500 bg-cyan-200'}`}
+                                className={`border-2 border-dashed rounded-md flex items-center justify-center font-bold w-40 h-20 m-2 cursor-pointer hover:bg-blue-300 hover:border-blue-900 ${box.id === active_box_id ? 'border-blue-900 bg-blue-300' : 'border-cyan-500 bg-cyan-200'}`}
                                 style={box.options}
                                 onClick={onBoxClick(box)}
                             />

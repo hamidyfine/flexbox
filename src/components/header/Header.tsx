@@ -22,10 +22,10 @@ const Header = () => {
                 >
                     <Github theme="outline" />
                 </a>
-                <Button
+                {/* <Button
                     text={localize('playground.reset', { ns: 'buttons' }) as string}
                     type="primary"
-                />
+                /> */}
             </div>
         </header>
     );
