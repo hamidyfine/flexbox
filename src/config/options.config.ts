@@ -1,18 +1,4 @@
-export type TOption = {
-    slug: string,
-    type: 'select' | 'input',
-    input_type?: 'text' | 'number',
-    placeholder?: string,
-    disabled: boolean,
-    options?: string[],
-};
-
-type TOptions = {
-    group_slug: 'container' | 'item',
-    icon: string,
-    color: string,
-    options: TOption[],
-};
+import { TOptions } from '@/types';
 
 export const OPTIONS: TOptions[] = [
     {
@@ -24,7 +10,7 @@ export const OPTIONS: TOptions[] = [
                 slug    : 'display',
                 type    : 'select',
                 disabled: true,
-                options : [
+                values  : [
                     'flex',
                     'inline-flex',
                     'block',
@@ -36,7 +22,7 @@ export const OPTIONS: TOptions[] = [
                 slug    : 'flex-direction',
                 type    : 'select',
                 disabled: false,
-                options : [
+                values  : [
                     'row',
                     'row-reverse',
                     'column',
@@ -47,24 +33,17 @@ export const OPTIONS: TOptions[] = [
                 slug    : 'flex-wrap',
                 type    : 'select',
                 disabled: false,
-                options : [
+                values  : [
                     'nowrap',
                     'wrap',
                     'wrap-reverse',
                 ],
             },
             {
-                slug       : 'flex-flow',
-                type       : 'input',
-                disabled   : true,
-                input_type : 'text',
-                placeholder: 'row nowrap',
-            },
-            {
                 slug    : 'justify-content',
                 type    : 'select',
                 disabled: false,
-                options : [
+                values  : [
                     'flex-start',
                     'flex-end',
                     'center',
@@ -77,7 +56,7 @@ export const OPTIONS: TOptions[] = [
                 slug    : 'align-items',
                 type    : 'select',
                 disabled: false,
-                options : [
+                values  : [
                     'stretch',
                     'flex-start',
                     'flex-end',
@@ -89,7 +68,7 @@ export const OPTIONS: TOptions[] = [
                 slug    : 'align-content',
                 type    : 'select',
                 disabled: false,
-                options : [
+                values  : [
                     'stretch',
                     'flex-start',
                     'flex-end',
@@ -112,17 +91,10 @@ export const OPTIONS: TOptions[] = [
                 input_type : 'text',
                 placeholder: '10px',
             },
-            {
-                slug       : 'gap',
-                type       : 'input',
-                disabled   : true,
-                input_type : 'text',
-                placeholder: 'row-gap column-gap'
-            },
-        ]
+        ],
     },
     {
-        group_slug: 'item',
+        group_slug: 'box',
         icon      : '',
         color     : 'cyan',
         options   : [
@@ -142,13 +114,13 @@ export const OPTIONS: TOptions[] = [
                 slug      : 'flex-shrink',
                 type      : 'input',
                 disabled  : false,
-                input_type: 'number'
+                input_type: 'number',
             },
             {
                 slug    : 'flex-basis',
                 type    : 'select',
                 disabled: false,
-                options : [
+                values  : [
                     'auto',
                     'content',
                     'fit-content',
@@ -157,17 +129,10 @@ export const OPTIONS: TOptions[] = [
                 ],
             },
             {
-                slug       : 'flex',
-                type       : 'input',
-                disabled   : true,
-                input_type : 'text',
-                placeholder: 'flex-grow flex-shrink auto'
-            },
-            {
                 slug    : 'align-self',
                 type    : 'select',
                 disabled: false,
-                options : [
+                values  : [
                     'auto',
                     'stretch',
                     'flex-start',
@@ -176,6 +141,6 @@ export const OPTIONS: TOptions[] = [
                     'baseline',
                 ],
             },
-        ]
-    }
+        ],
+    },
 ];

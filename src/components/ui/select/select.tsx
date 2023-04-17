@@ -1,29 +1,13 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { setStyle } from '@/stores/options';
+import { TSelectOption } from '@/types';
 
-type TOption = {
-    value: string;
-    label: string;
-};
-
-type TProps = {
-    options: TOption[];
+type TSelectProp = {
+    options: TSelectOption[];
     disabled?: boolean;
-    slug: string;
-    group: 'item' | 'container';
+    value?: string;
+    onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
-const kebabToCamelCase = (str: string): string => str.replace(/-([a-z])/g, (match, letter) => letter.toUpperCase());
-
-
-const Select = ({ options, disabled, slug, group }: TProps) => {
-    const value = useSelector((state: any) => state.options[group][slug]);
-    const dispatch = useDispatch();
-
-    const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        dispatch(setStyle({ group: group, slug: kebabToCamelCase(slug), value: e.target.value }));
-    };
-
+const Select = ({ options, disabled, onChange, value }: TSelectProp) => {
     return (
         <select
             className="text-sm font-normal rounded border-2 text-black h-auto bg-white hover:border-blue-400 disabled:bg-gray-100 disabled:text-gray-500 transition-all focus:outline-none p-2"

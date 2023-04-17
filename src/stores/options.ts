@@ -32,6 +32,15 @@ type TSetStylePayload = {
     value: string | number;
 }
 
+const item_options = {
+    order     : 0,
+    flexGrow  : 0,
+    flexShrink: 0,
+    flexBasis : 'auto',
+    flex      : '',
+    alignSelf : 'auto',
+};
+
 export const optionsSlice = createSlice({
     name: 'options',
 

@@ -1,8 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import optionsReducer from './options';
+
+import containerReducer from './container.store';
+import boxReducer from './box.store';
 
 export default configureStore({
     reducer: {
-        options: optionsReducer,
-    }
+        container: containerReducer,
+        box      : boxReducer,
+    },
 });

@@ -1,49 +1,13 @@
-import { OPTIONS, TOption } from '@/config/options';
-import Select from '../select';
-import Input from '../input';
-import { Locale } from '../Locale';
+import { useSelector } from 'react-redux';
 import classNames from 'classnames';
-
-const camelToKebab = (camelCase: string) => {
-    return camelCase.replace(/[A-Z]/g, (match) => '-' + match.toLowerCase());
-};
-
-
-const OptionBox = ({ option, classes, group }: { option: TOption, classes?: string; group: 'item' | 'container' }) => {
-    const options_values = option.options?.map((val) => {
-        return {
-            label: val,
-            value: val,
-        };
-    });
-    return (
-        <div className={classNames('items-center grid grid-cols-2 px-3 py-2', classes)}>
-            <span className="text-sm font-medium">{camelToKebab(option.slug)}</span>
-            <>
-                {option.type === 'select' && (
-                    <Select
-                        disabled={option.disabled}
-                        slug={option.slug}
-                        group={group}
-                        options={options_values!}
-                    />
-                )}
-                {option.type === 'input' && (
-                    <Input
-                        disabled={option.disabled}
-                        type={option.input_type}
-                        placeholder={option.placeholder}
-                        slug={option.slug}
-                        group={group}
-                    />
-                )}
-            </>
-        </div>
-    );
-};
+import { OPTIONS } from '@/config/options.config';
+import { Locale } from '../Locale';
+import SingleOption from './SingleOption';
+import { kebabToCamel } from '@/utils';
 
 const Options = () => {
-    // const options_keys = Object.keys(OPTIONS);
+    const active_box = useSelector((state: any) => state.box.active_box);
+    const container_style = useSelector((state: any) => state.container);
 
     return (
         <aside className="flex flex-col basis-1/4 bg-white border-r border-gray-300 h-full w-80 overflow-y-auto p-2">
@@ -57,18 +21,40 @@ const Options = () => {
                             <h3 className="font-medium text-base">
                                 <Locale alias={`options.${group.group_slug}_title`} />
                             </h3>
-                            {group.group_slug === 'item' && (
-                                <span className="border-2 rounded-md bg-cyan-800 border-cyan-900 text-white px-3 py-1 cursor-default">A</span>
+                            {group.group_slug === 'box' && active_box?.id && (
+                                <span className="border-2 rounded-md bg-cyan-800 border-cyan-900 text-white px-3 py-1 cursor-default">
+                                    {active_box?.label}
+                                </span>
                             )}
                         </div>
 
                         <div>
-                            {group.options.map((option, i) => {
+                            {/* Container Options */}
+                            {group.group_slug === 'container' && group.options.map((option, i) => {
                                 return (
-                                    <OptionBox
-                                        option={option}
-                                        group={group.group_slug}
+                                    <SingleOption
                                         key={i}
+                                        group={group.group_slug}
+                                        option={option}
+                                        value={container_style[kebabToCamel(option.slug)]}
+                                        classes={classNames(`[&:nth-child(even)]:bg-${group.color}-50`)}
+                                    />
+                                );
+                            })}
+
+                            {/* Box Options */}
+                            {group.group_slug === 'box' && !active_box?.id && (
+                                <p className="block m-4 p-4 border-2 rounded-md bg-gray-50 text-sm text-center leading-relaxed">
+                                    <Locale alias="options.no_box_selected" />
+                                </p>
+                            )}
+                            {group.group_slug === 'box' && active_box?.id && group.options.map((option, i) => {
+                                return (
+                                    <SingleOption
+                                        key={i}
+                                        group={group.group_slug}
+                                        option={option}
+                                        value={active_box.options[kebabToCamel(option.slug)]}
                                         classes={classNames(`[&:nth-child(even)]:bg-${group.color}-50`)}
                                     />
                                 );

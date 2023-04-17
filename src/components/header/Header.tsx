@@ -1,6 +1,6 @@
 import { Locale, localize } from '@/components/Locale';
 import appPackageInfo from '../../../package.json';
-import Button from '@/components/button';
+import Button from '@/components/ui/button';
 import { Github } from '@icon-park/react';
 
 const Header = () => {

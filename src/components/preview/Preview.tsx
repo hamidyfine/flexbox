@@ -1,42 +1,50 @@
 import classNames from 'classnames';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Locale, localize } from '../Locale';
 import React from 'react';
-import Button from '../button';
+import Button from '../ui/button';
+import { addNewBox, setActiveBoxId, setActiveBox } from '@/stores/box.store';
+import Box from './Box';
+import { TBox } from '@/types';
 
-type TBox = {
-    className: string;
-    style: object;
-    box: string;
-};
-
-const Box = ({ className, style, box }: TBox) => {
-    return (
-        <div
-            className={className}
-            style={style}
-        >
-            {box}
-        </div>
-    );
-};
-
-const Preview = ({ ...props }) => {
-    const [boxes, setBoxes] = React.useState(['A', 'B', 'C']);
+const Preview = () => {
+    const dispatch = useDispatch();
     const base_classes: string = 'border-2 border-cyan-500 bg-cyan-200 border-dashed rounded-md flex items-center justify-center font-bold w-40 h-20 m-2';
-    const options = useSelector((state: any) => state.options);
+    const boxes: TBox[] = useSelector((state: any) => state.box.items);
+    const active_box_id = useSelector((state: any) => state.box.active_box_id);
+    const container_styles = useSelector((state: any) => state.container);
 
     const addBox = () => {
-        const lastLetter = boxes[boxes.length - 1];
+        const lastLetter = boxes.length ? boxes[boxes.length - 1].label : null;
+        const has_z = boxes.find((box) => box.label === 'Z');
         let nextLetter: string;
-  
-        if (boxes.includes('Z')) {
+
+        if (!lastLetter) {
+            nextLetter = 'A';
+        } else if (has_z) {
             const randomLetters = Math.random().toString(36).replace(/[^a-zA-Z]/g, '').toUpperCase().slice(0, 2);
             nextLetter = randomLetters;
         } else {
             nextLetter = String.fromCharCode(lastLetter.charCodeAt(0) + 1);
         }
-        setBoxes([...boxes, nextLetter]);
+
+        const box: TBox = {
+            label  : nextLetter,
+            id     : String(boxes.length + 1),
+            options: {
+                order     : 0,
+                flexGrow  : 0,
+                flexShrink: 0,
+                flexBasis : 'auto',
+                alignSelf : 'auto',
+            },
+        };
+        dispatch(addNewBox(box));
+    };
+
+    const onBoxClick = (box: TBox) => () => {
+        dispatch(setActiveBoxId(box.id));
+        dispatch(setActiveBox(box));
     };
 
     return (
@@ -49,20 +57,21 @@ const Preview = ({ ...props }) => {
 
                     <Button
                         text={localize('playground.add_box', { ns: 'buttons' }) as string}
-                        onClick={addBox}
+                        onClick={() => addBox()}
                     />
                 </div>
                 <div
                     className={classNames('border-4 border-dashed border-amber-300 p-8 relative rounded-md flex-grow')}
-                    style={options.container}
+                    style={container_styles}
                 >
-                    {boxes.map((box, index) => {
+                    {boxes.map(box => {
                         return (
                             <Box
-                                key={index}
+                                key={box.id}
                                 box={box}
-                                className={classNames(base_classes)}
-                                style={options.item}
+                                className={classNames(base_classes, { 'border-blue-900 bg-blue-300': box.id === active_box_id })}
+                                style={box.options}
+                                onClick={onBoxClick(box)}
                             />
                         );
                     })}
