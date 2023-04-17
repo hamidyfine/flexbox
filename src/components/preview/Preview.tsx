@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
 import { Locale, localize } from '../Locale';
 import Button from '../ui/button';
@@ -8,7 +7,6 @@ import { TBox } from '@/types';
 
 const Preview = () => {
     const dispatch = useDispatch();
-    const base_classes: string = 'border-2 border-cyan-500 bg-cyan-200 border-dashed rounded-md flex items-center justify-center font-bold w-40 h-20 m-2';
     const boxes: TBox[] = useSelector((state: any) => state.box.items);
     const active_box_id = useSelector((state: any) => state.box.active_box_id);
     const container_styles = useSelector((state: any) => state.container);
@@ -48,7 +46,7 @@ const Preview = () => {
 
     return (
         <section className="h-full flex flex-grow basis-3/4 items-center justify-center bg-gray-100 p-4 max-h-screen overflow-x-auto">
-            <div className="flex flex-col w-full min-h-2/5 max-h-full overflow-y-auto p-4">
+            <div className="flex flex-col w-full h-3/5 overflow-y-auto p-4">
                 <div className="flex items-center justify-between mb-2">
                     <h3 className="font-handwriting text-2xl">
                         <Locale alias="options.container_title" />
@@ -60,7 +58,7 @@ const Preview = () => {
                     />
                 </div>
                 <div
-                    className={classNames('border-4 border-dashed border-amber-300 p-8 relative rounded-md flex-grow')}
+                    className="border-4 border-dashed border-amber-300 p-8 relative rounded-md flex-grow"
                     style={container_styles}
                 >
                     {boxes.map(box => {
@@ -68,7 +66,7 @@ const Preview = () => {
                             <Box
                                 key={box.id}
                                 box={box}
-                                className={classNames(base_classes, { 'border-blue-900 bg-blue-300': box.id === active_box_id })}
+                                className={`border-2 border-dashed rounded-md flex items-center justify-center font-bold w-40 h-20 m-2 ${box.id === active_box_id ? 'border-blue-900 bg-blue-300' : 'border-cyan-500 bg-cyan-200'}`}
                                 style={box.options}
                                 onClick={onBoxClick(box)}
                             />

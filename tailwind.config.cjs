@@ -10,5 +10,13 @@ module.exports = {
             'handwriting': ['\'Patrick Hand\', sans-serif', 'system-ui'],
         },
     },
-    plugins: [],
+    plugins : [],
+    safelist: [
+        {
+            pattern: /bg-/,
+        },
+        {
+            pattern: /border-/,
+        },
+    ],
 };

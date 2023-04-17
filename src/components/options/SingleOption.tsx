@@ -1,5 +1,4 @@
 import { useDispatch } from 'react-redux';
-import classNames from 'classnames';
 import { setContainerStyle } from '@/stores/container.store';
 import { setBoxStyle } from '@/stores/box.store';
 import { camelToKebab, kebabToCamel } from '@/utils';
@@ -34,7 +33,7 @@ const SingleOption = ({ group, option, classes, value }: TSingleOption) => {
     };
 
     return (
-        <div className={classNames('items-center grid grid-cols-2 px-3 py-2', classes)}>
+        <div className={`items-center grid grid-cols-2 px-3 py-2 ${classes}`}>
             <span className="text-sm font-medium">{camelToKebab(option.slug)}</span>
 
             {option.type === 'select' && (

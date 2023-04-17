@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux';
-import classNames from 'classnames';
 import { OPTIONS } from '@/config/options.config';
 import { Locale } from '../Locale';
 import SingleOption from './SingleOption';
@@ -15,9 +14,9 @@ const Options = () => {
                 return (
                     <div
                         key={index}
-                        className={classNames('rounded-md border-2 mb-2', `border-${group.color}-300`)}
+                        className={`rounded-md border-2 mb-2 border-${group.color}-300`}
                     >
-                        <div className={classNames('flex items-center justify-between px-3 py-2', `bg-${group.color}-300`)}>
+                        <div className={`flex items-center justify-between px-3 py-2 bg-${group.color}-300`}>
                             <h3 className="font-medium text-base">
                                 <Locale alias={`options.${group.group_slug}_title`} />
                             </h3>
@@ -37,7 +36,7 @@ const Options = () => {
                                         group={group.group_slug}
                                         option={option}
                                         value={container_style[kebabToCamel(option.slug)]}
-                                        classes={classNames(`[&:nth-child(even)]:bg-${group.color}-50`)}
+                                        classes={`[&:nth-child(even)]:bg-${group.color}-50`}
                                     />
                                 );
                             })}
@@ -55,7 +54,7 @@ const Options = () => {
                                         group={group.group_slug}
                                         option={option}
                                         value={active_box.options[kebabToCamel(option.slug)]}
-                                        classes={classNames(`[&:nth-child(even)]:bg-${group.color}-50`)}
+                                        classes={`[&:nth-child(even)]:bg-${group.color}-50`}
                                     />
                                 );
                             })}
