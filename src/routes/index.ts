@@ -18,7 +18,7 @@ const routes = [
         path     : '/',
         layout   : Layout.DefaultLayout,
         component: App,
-        children : []
+        children : [],
     },
 ];
 

@@ -12,8 +12,8 @@ const resources = {
         en: {
             core   : CoreEN,
             buttons: ButtonsEN,
-        }
-    }
+        },
+    },
 };
 
 // eslint-disable-next-line import/no-named-as-default-member

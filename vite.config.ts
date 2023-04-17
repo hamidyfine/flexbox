@@ -15,6 +15,6 @@ export default defineConfig({
             '@routes'    : path.resolve(__dirname, './src/routes'),
             '@scss'      : path.resolve(__dirname, './src/scss'),
             '@stores'    : path.resolve(__dirname, './src/stores'),
-        }
-    }
+        },
+    },
 });

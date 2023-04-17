@@ -5,5 +5,5 @@ export type TLayoutProps = {
 }
 
 export {
-    DefaultLayout
+    DefaultLayout,
 };

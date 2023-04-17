@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
 import { Locale, localize } from '../Locale';
-import React from 'react';
 import Button from '../ui/button';
 import { addNewBox, setActiveBoxId, setActiveBox } from '@/stores/box.store';
 import Box from './Box';
