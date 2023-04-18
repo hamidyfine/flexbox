@@ -43,7 +43,10 @@ export const boxSlice = createSlice({
         setBoxStyle: (state, action: PayloadAction<TBoxAction>) => {
             const { slug, value }: { slug: TBoxOptionsSlug, value: string } = action.payload;
             const item = state.items.find(item => item.id === state.active_box_id);
-            if (item) item.options[slug] = value;
+            if (item) {
+                item.options[slug] = value;
+                state.active_box = item;
+            }
         },
     },
 });
