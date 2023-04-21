@@ -5,8 +5,11 @@ import SingleOption from './SingleOption';
 import { kebabToCamel } from '@/utils';
 
 const Options = () => {
-    const active_box = useSelector((state: any) => state.box.active_box);
+    const boxes = useSelector((state: any) => state.box.items);
+    const active_box_id = useSelector((state: any) => state.box.active_box_id);
     const container_style = useSelector((state: any) => state.container);
+
+    const active_box = boxes.find((box: any) => box.id === active_box_id);
 
     return (
         <aside className="flex flex-col basis-1/4 bg-white border-r border-gray-300 h-full w-80 overflow-y-auto p-2">

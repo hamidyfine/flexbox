@@ -2,7 +2,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Locale, localize } from '../Locale';
 import Button from '../ui/button';
-import { addNewBox, setActiveBoxId, setActiveBox } from '@/stores/box.store';
+import { addNewBox, setActiveBoxId } from '@/stores/box.store';
 import Box from './Box';
 import { TBox } from '@/types';
 
@@ -42,11 +42,10 @@ const Preview = () => {
 
     const onBoxClick = (box: TBox) => () => {
         dispatch(setActiveBoxId(box.id));
-        dispatch(setActiveBox(box));
     };
 
     return (
-        <section className="h-full flex flex-grow basis-3/4 items-center justify-center bg-gray-100 p-4 max-h-screen overflow-x-auto">
+        <section className="h-full flex flex-grow basis-3/4 items-center justify-center bg-gray-100 p-4 max-h-screen overflow-x-auto relative">
             <div className="flex flex-col w-full h-3/5 overflow-y-auto p-4">
                 <div className="flex items-center justify-between mb-2">
                     <h3 className="font-handwriting text-2xl">
@@ -75,6 +74,19 @@ const Preview = () => {
                     })}
                 </div>
             </div>
+
+            <a
+                href="https://www.buymeacoffee.com/hamidyfine"
+                target="_blank"
+                rel="noreferrer"
+                className="absolute bottom-3 right-3 rounded-md"
+            >
+                <img
+                    src="/bmc-button.png"
+                    alt="Buy me a coffee"
+                    className="w-40 cursor-pointer block"
+                />
+            </a>
         </section>
     );
 };

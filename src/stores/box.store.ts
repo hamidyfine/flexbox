@@ -3,7 +3,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type TInitialState = {
     items: TBox[];
-    active_box: Partial<TBox>;
     active_box_id: string;
 }
 
@@ -21,7 +20,6 @@ const initialState: TInitialState = {
             },
         },
     ],
-    active_box   : {},
     active_box_id: '',
 };
 
@@ -34,19 +32,13 @@ export const boxSlice = createSlice({
         setActiveBoxId: (state, action) => {
             state.active_box_id = action.payload;
         },
-        setActiveBox: (state, action) => {
-            state.active_box = action.payload;
-        },
         addNewBox: (state, action) => {
             state.items.push(action.payload);
         },
         setBoxStyle: (state, action: PayloadAction<TBoxAction>) => {
             const { slug, value }: { slug: TBoxOptionsSlug, value: string } = action.payload;
             const item = state.items.find(item => item.id === state.active_box_id);
-            if (item) {
-                item.options[slug] = value;
-                state.active_box = item;
-            }
+            if (item) item.options[slug] = value;
         },
     },
 });
@@ -54,7 +46,6 @@ export const boxSlice = createSlice({
 export const {
     setBoxStyle,
     setActiveBoxId,
-    setActiveBox,
     addNewBox,
 } = boxSlice.actions;
 
