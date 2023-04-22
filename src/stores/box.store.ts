@@ -19,6 +19,50 @@ const initialState: TInitialState = {
                 alignSelf : 'auto',
             },
         },
+        {
+            label  : 'B',
+            id     : '2',
+            options: {
+                order     : 0,
+                flexGrow  : 0,
+                flexShrink: 0,
+                flexBasis : 'auto',
+                alignSelf : 'auto',
+            },
+        },
+        {
+            label  : 'C',
+            id     : '3',
+            options: {
+                order     : 0,
+                flexGrow  : 0,
+                flexShrink: 0,
+                flexBasis : 'auto',
+                alignSelf : 'auto',
+            },
+        },
+        {
+            label  : 'D',
+            id     : '4',
+            options: {
+                order     : 0,
+                flexGrow  : 0,
+                flexShrink: 0,
+                flexBasis : 'auto',
+                alignSelf : 'auto',
+            },
+        },
+        {
+            label  : 'E',
+            id     : '5',
+            options: {
+                order     : 0,
+                flexGrow  : 0,
+                flexShrink: 0,
+                flexBasis : 'auto',
+                alignSelf : 'auto',
+            },
+        },
     ],
     active_box_id: '',
 };
@@ -35,6 +79,9 @@ export const boxSlice = createSlice({
         addNewBox: (state, action) => {
             state.items.push(action.payload);
         },
+        removeBox: (state, action) => {
+            state.items = state.items.filter(item => item.id !== action.payload);
+        },
         setBoxStyle: (state, action: PayloadAction<TBoxAction>) => {
             const { slug, value }: { slug: TBoxOptionsSlug, value: string } = action.payload;
             const item = state.items.find(item => item.id === state.active_box_id);
@@ -47,6 +94,7 @@ export const {
     setBoxStyle,
     setActiveBoxId,
     addNewBox,
+    removeBox,
 } = boxSlice.actions;
 
 export default boxSlice.reducer;

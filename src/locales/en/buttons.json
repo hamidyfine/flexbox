@@ -1,6 +1,7 @@
 {
     "playground": {
         "reset": "Reset to default",
-        "add_box": "Add Box"
+        "add_box": "Add Box",
+        "remove_box": "Remove Box"
     }
 }

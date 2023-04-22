@@ -1,7 +1,7 @@
 type TProps = {
     className?: string;
     onClick?: () => void;
-    text: string;
+    text: string | JSX.Element;
     type?: 'primary' | 'secondary';
 };
 
@@ -11,7 +11,7 @@ const Button = ({ className, onClick, text, type = 'primary' }: TProps) => {
 
     return (
         <button
-            className={`text-sm cursor-pointer rounded px-4 py-2 border-none ${type === 'primary' ? primary : secondary}`}
+            className={`text-sm cursor-pointer rounded px-4 py-2 border-none ${className} ${type === 'primary' ? primary : secondary}`}
             onClick={onClick}
         >
             {text}

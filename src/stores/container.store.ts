@@ -4,10 +4,10 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 const initialState: TContainerOptions = {
     display       : 'flex',
     flexDirection : 'row',
-    flexWrap      : 'nowrap',
-    justifyContent: 'flex-start',
+    flexWrap      : 'wrap',
+    justifyContent: 'center',
     alignItems    : 'center',
-    alignContent  : 'stretch',
+    alignContent  : 'center',
     rowGap        : '',
     columnGap     : '',
 };
