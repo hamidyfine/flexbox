@@ -41,7 +41,11 @@ const Preview = () => {
     };
 
     const onBoxClick = (box: TBox) => () => {
-        dispatch(setActiveBoxId(box.id));
+        if (box.id !== active_box_id) {
+            dispatch(setActiveBoxId(box.id));
+        } else {
+            dispatch(setActiveBoxId(null));
+        }
     };
 
     return (
