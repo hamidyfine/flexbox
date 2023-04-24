@@ -7,7 +7,7 @@ const initialState: TContainerOptions = {
     flexWrap      : 'wrap',
     justifyContent: 'center',
     alignItems    : 'center',
-    alignContent  : 'center',
+    alignContent  : 'unset',
     rowGap        : '',
     columnGap     : '',
 };

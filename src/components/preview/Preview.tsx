@@ -50,10 +50,13 @@ const Preview = () => {
 
     return (
         <section className="h-full flex flex-grow basis-3/4 items-center justify-center bg-gray-100 p-4 max-h-screen overflow-x-auto relative">
-            <div className="flex flex-col w-full h-3/5 overflow-y-auto p-4">
+            <div
+                style={{ maxHeight: 'calc(100vh - 73px - 33px)', minHeight: '400px' }}
+                className="flex flex-col w-full p-8"
+            >
                 <div className="flex items-center justify-between mb-2">
                     <h3 className="font-handwriting text-2xl">
-                        <Locale alias="options.container_title" />
+                        <Locale alias="options.container_box_title" />
                     </h3>
 
                     <Button
@@ -62,7 +65,7 @@ const Preview = () => {
                     />
                 </div>
                 <div
-                    className="border-4 border-dashed border-amber-300 p-8 relative rounded-md flex-grow"
+                    className="border-4 border-solid p-8 relative rounded-md flex-grow bg-orange-400 border-orange-500"
                     style={container_styles}
                 >
                     {boxes.map(box => {
@@ -70,7 +73,7 @@ const Preview = () => {
                             <Box
                                 key={box.id}
                                 box={box}
-                                className={`border-2 border-dashed rounded-md flex items-center justify-center font-bold w-40 h-20 m-2 cursor-pointer hover:bg-blue-300 hover:border-blue-900 ${box.id === active_box_id ? 'border-blue-900 bg-blue-300' : 'border-cyan-500 bg-cyan-200'}`}
+                                className={`border-2 border-solid rounded-md flex items-center justify-center font-bold w-40 h-20 m-2 cursor-pointer hover:bg-blue-300 hover:border-blue-900 hover:text-black ${box.id === active_box_id ? 'border-blue-900 bg-blue-300 text-black' : 'border-cyan-900 bg-cyan-600 text-white'}`}
                                 style={box.options}
                                 onClick={onBoxClick(box)}
                             />
@@ -83,7 +86,7 @@ const Preview = () => {
                 href="https://www.buymeacoffee.com/hamidyfine"
                 target="_blank"
                 rel="noreferrer"
-                className="absolute bottom-3 right-3 rounded-md"
+                className="fixed bottom-10 right-6 rounded-md"
             >
                 <img
                     src="/bmc-button.png"

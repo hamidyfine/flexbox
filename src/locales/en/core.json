@@ -4,8 +4,9 @@
         "description": "A web app for exploring Flexbox"
     },
     "options": {
-        "container_title": "Container Options",
-        "box_title": "Box Options",
+        "container_box_title": "Container",
+        "container_title": "Container Properties",
+        "box_title": "Box Properties",
         "no_box_selected": "For edit box options, please select box from the Preview panel."
     },
     "footer": "Created by Hamid Yaftian"

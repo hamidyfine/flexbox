@@ -44,6 +44,7 @@ export const OPTIONS: TOptions[] = [
                 type    : 'select',
                 disabled: false,
                 values  : [
+                    'unset',
                     'center',
                     'flex-start',
                     'flex-end',
@@ -57,6 +58,7 @@ export const OPTIONS: TOptions[] = [
                 type    : 'select',
                 disabled: false,
                 values  : [
+                    'unset',
                     'center',
                     'stretch',
                     'flex-start',
@@ -69,6 +71,7 @@ export const OPTIONS: TOptions[] = [
                 type    : 'select',
                 disabled: false,
                 values  : [
+                    'unset',
                     'center',
                     'stretch',
                     'flex-start',
