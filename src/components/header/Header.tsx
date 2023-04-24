@@ -1,6 +1,6 @@
-import { Locale, localize } from '@/components/Locale';
+import { Locale } from '@/components/Locale';
 import appPackageInfo from '../../../package.json';
-import Button from '@/components/ui/button';
+// import Button from '@/components/ui/button';
 import { Github } from '@icon-park/react';
 
 const Header = () => {
@@ -14,6 +14,18 @@ const Header = () => {
             </h1>
 
             <div className="flex items-center justify-end">
+                <a
+                    // eslint-disable-next-line max-len
+                    className="bg-green-300 hover:bg-green-500 hover:text-white focus:bg-green-50 font-normal focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-green-600 focus:ring-opacity-40 transition-all mr-4 px-4 py-2 rounded-md text-inherit"
+                    href="https://itshamid.me/blog/flexbox-ultimate-guide-part-1"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    <Locale
+                        alias='playground.learn_flexbox'
+                        ns="buttons"
+                    />
+                </a>
                 <a
                     className="text-2xl mr-4 hover:bg-zinc-200 rounded-full p-2 transition-all"
                     href="https://github.com/hamidyfine/flexbox"

@@ -2,6 +2,7 @@
     "playground": {
         "reset": "Reset to default",
         "add_box": "Add Box",
-        "remove_box": "Remove Box"
+        "remove_box": "Remove Box",
+        "learn_flexbox": "A Complete Guide to Flexbox"
     }
 }
